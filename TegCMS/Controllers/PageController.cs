@@ -16,7 +16,7 @@ namespace TegCMS.Controllers
         {
             var pageModel = _pageModelFactory.Build();
 
-            return View(pageModel.ViewName);
+            return View(pageModel.ViewName, pageModel.ViewModel);
         }
     }
 }
