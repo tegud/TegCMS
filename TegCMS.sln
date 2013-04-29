@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS", "TegCMS\TegCMS.csproj", "{74381251-C591-4846-835E-4548D5230472}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{87D86790-00F3-4CFE-8F31-B04B48CA05F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS.Tests", "TegCMS.Tests\TegCMS.Tests.csproj", "{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS.Pages", "TegCMS.Pages\TegCMS.Pages.csproj", "{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +19,19 @@ Global
 		{74381251-C591-4846-835E-4548D5230472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74381251-C591-4846-835E-4548D5230472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74381251-C591-4846-835E-4548D5230472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507} = {87D86790-00F3-4CFE-8F31-B04B48CA05F6}
 	EndGlobalSection
 EndGlobal
