@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Web.Mvc;
 using NUnit.Framework;
 using TegCMS.Controllers;
 using TegCMS.Pages;
@@ -14,6 +13,16 @@ namespace TegCMS.Tests.Controllers
 
         [Test]
         public void IndexReturnsSpecifiedLayout()
+        {
+            _expectedViewName = "expectedView";
+
+            var result = new PageController(this).Index();
+
+            Assert.That(result.ViewName, Is.EqualTo(_expectedViewName));
+        }
+
+        [Test]
+        public void IndexReturnsDifferentLayoutForADifferentRouteName()
         {
             _expectedViewName = "expectedView";
 
