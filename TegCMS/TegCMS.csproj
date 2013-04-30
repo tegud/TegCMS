@@ -136,6 +136,10 @@
       <Project>{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}</Project>
       <Name>TegCMS.Pages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TegCMS.Utilities\TegCMS.Utilities.csproj">
+      <Project>{00713D44-AA9B-46CC-9804-D70C94FB812E}</Project>
+      <Name>TegCMS.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
