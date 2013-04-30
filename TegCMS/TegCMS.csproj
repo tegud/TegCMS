@@ -126,7 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Layouts\localhost\" />
     <Folder Include="Models\" />
+    <Folder Include="Modules\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

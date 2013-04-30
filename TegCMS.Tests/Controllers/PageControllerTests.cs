@@ -3,7 +3,7 @@ using System.Web;
 using System.Web.Routing;
 using NUnit.Framework;
 using TegCMS.Controllers;
-using TegCMS.Pages;
+using TegCMS.Pages.Models;
 using TegCMS.Utilities;
 
 namespace TegCMS.Tests.Controllers

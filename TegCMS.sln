@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS.Utilities", "TegCMS.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS.Utilities.Tests", "TegCMS.Utilities.Tests\TegCMS.Utilities.Tests.csproj", "{3C3F0947-B210-4EA6-BB97-CF4DF96A7EE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TegCMS.Pages.Tests", "TegCMS.Pages.Tests\TegCMS.Pages.Tests.csproj", "{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{3C3F0947-B210-4EA6-BB97-CF4DF96A7EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C3F0947-B210-4EA6-BB97-CF4DF96A7EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C3F0947-B210-4EA6-BB97-CF4DF96A7EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +52,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6AB4C65E-ABB5-4C7E-BCD8-41985A2B3507} = {87D86790-00F3-4CFE-8F31-B04B48CA05F6}
 		{3C3F0947-B210-4EA6-BB97-CF4DF96A7EE9} = {87D86790-00F3-4CFE-8F31-B04B48CA05F6}
+		{6C822EF0-5E1A-47F3-879C-27E61BFC93CC} = {87D86790-00F3-4CFE-8F31-B04B48CA05F6}
 	EndGlobalSection
 EndGlobal

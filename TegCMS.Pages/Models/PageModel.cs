@@ -1,4 +1,4 @@
-namespace TegCMS.Pages
+namespace TegCMS.Pages.Models
 {
     public class PageModel
     {
