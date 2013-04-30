@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMvcRequestFactory.cs" />
     <Compile Include="MvcRouteDataFactory.cs" />
     <Compile Include="MvcRouteData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
