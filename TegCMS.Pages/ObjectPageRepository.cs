@@ -9,7 +9,11 @@ namespace TegCMS.Pages
     {
         private readonly IEnumerable<SiteInformation> _siteInformation = new List<SiteInformation>
             {
-                new SiteInformation(@"(tegud\.net)|localhost", "tegud")
+                new SiteInformation(@"(tegud\.net)|(localhost)", "tegud", new List<PageRecord>
+                    {
+                        new PageRecord { RouteName = "Home", Layout = "2Column" },
+                        new PageRecord { RouteName = "About", Layout = "1Column" }
+                    })
             };
 
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
@@ -24,7 +28,8 @@ namespace TegCMS.Pages
 
             return new PageInformation
                 {
-                    SiteName = siteInformation.SiteName
+                    SiteName = siteInformation.SiteName,
+                    Layout = siteInformation.GetLayout(routeName)
                 };
         }
     }

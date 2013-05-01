@@ -9,13 +9,13 @@ namespace TegCMS.Pages.Tests.Data
         [Test]
         public void HostNameMatchesReturnsTrueForMatchingPattern()
         {
-            Assert.That(new SiteInformation(@"tegud\.net", null).HostNameMatches("www.tegud.net"), Is.True);
+            Assert.That(new SiteInformation(@"tegud\.net", null, null).HostNameMatches("www.tegud.net"), Is.True);
         }
 
         [Test]
         public void HostNameMatchesReturnsFalseForNonMatchingPattern()
         {
-            Assert.That(new SiteInformation(@"tegud\.net", null).HostNameMatches("localhost"), Is.False);
+            Assert.That(new SiteInformation(@"tegud\.net", null, null).HostNameMatches("localhost"), Is.False);
         }
     }
 }
