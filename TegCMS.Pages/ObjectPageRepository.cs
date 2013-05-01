@@ -11,6 +11,7 @@ namespace TegCMS.Pages
             {
                 new SiteInformation(@"(tegud\.net)|(localhost)", "tegud", new List<PageRecord>
                     {
+                        new PageRecord { RouteName = "", Layout = "2Column" },
                         new PageRecord { RouteName = "Home", Layout = "2Column" },
                         new PageRecord { RouteName = "About", Layout = "1Column" }
                     })

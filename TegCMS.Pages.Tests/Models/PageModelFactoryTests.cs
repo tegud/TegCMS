@@ -11,25 +11,25 @@ namespace TegCMS.Pages.Tests.Models
         private string _layout;
 
         [Test]
-        public void BuildSetsViewNameFromLayoutAndSite()
+        public void BuildSetsViewNameFromLayout()
         {
             _siteName = "tegud";
             _layout = "2Column";
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("Home", "localhost").ViewName, Is.EqualTo("tegud/2Column"));
+            Assert.That(factory.Build("Home", "localhost").ViewName, Is.EqualTo("2Column"));
         }
 
         [Test]
-        public void BuildSetsViewNameForDifferentSite()
+        public void BuildSetsAreaNameForFromSite()
         {
             _siteName = "anotherSite";
-            _layout = "2Column";
+            _layout = "Default";
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("Home", "www.google.com").ViewName, Is.EqualTo("anotherSite/2Column"));
+            Assert.That(factory.Build("Home", "www.google.com").AreaName, Is.EqualTo("anotherSite"));
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace TegCMS.Pages.Tests.Models
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("About", "localhost").ViewName, Is.EqualTo("tegud/1Column"));   
+            Assert.That(factory.Build("About", "localhost").ViewName, Is.EqualTo("1Column"));   
         }
 
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
