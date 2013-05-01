@@ -126,7 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Layouts\localhost\" />
     <Folder Include="Models\" />
     <Folder Include="Modules\" />
   </ItemGroup>
@@ -142,6 +141,12 @@
       <Project>{00713D44-AA9B-46CC-9804-D70C94FB812E}</Project>
       <Name>TegCMS.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Layouts\tegud\2Column.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Layouts\Web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

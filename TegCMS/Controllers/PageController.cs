@@ -42,6 +42,8 @@ namespace TegCMS.Controllers
 
             var pageModel = _pageModelFactory.Build(mvcRouteData.GetRouteName(), mvcRequest.GetUrlHostName());
 
+            mvcRouteData.SetAreaName(pageModel.AreaName);
+
             return View(pageModel.ViewName, pageModel.ViewModel);
         }
     }

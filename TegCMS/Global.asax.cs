@@ -18,8 +18,8 @@ namespace TegCMS
             var razorEngine = new RazorViewEngine
             {
                 AreaPartialViewLocationFormats = new[] { "~/Modules/{2}/Views/{1}/{0}.cshtml" },
-                AreaViewLocationFormats = new[] { "~/Layouts/{2}/{1}/{0}.cshtml" },
-                AreaMasterLocationFormats = new[] { "~/Layouts/{2}/{1}/{0}.cshtml" }
+                AreaViewLocationFormats = new[] { "~/Layouts/{2}/{0}.cshtml" },
+                AreaMasterLocationFormats = new[] { "~/Layouts/{2}/{0}.cshtml" }
             };
 
             ViewEngines.Engines.Add(razorEngine);

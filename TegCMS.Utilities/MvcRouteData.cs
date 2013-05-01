@@ -18,5 +18,10 @@ namespace TegCMS.Utilities
             
             return string.Empty;
         }
+
+        public void SetAreaName(string areaName)
+        {
+            _routeData.DataTokens.Add("area", areaName);
+        }
     }
 }

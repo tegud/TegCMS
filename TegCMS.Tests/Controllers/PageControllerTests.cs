@@ -16,6 +16,7 @@ namespace TegCMS.Tests.Controllers
         private object _expectedViewModel;
         private RouteData _routeData;
         private string _url;
+        private string _expectedAreaName;
 
         [Test]
         public void IndexReturnsSpecifiedLayout()
@@ -69,6 +70,18 @@ namespace TegCMS.Tests.Controllers
             Assert.That(result.ViewData.Model, Is.EqualTo(_expectedViewModel));
         }
 
+        [Test]
+        public void IndexSetsSiteNameOnMvcRouteData()
+        {
+            _url = LOCALHOST;
+            _routeData = new RouteData();
+            _expectedAreaName = "tegud";
+
+            new PageController(this, this, this).Index();
+
+            Assert.That(_routeData.DataTokens["area"], Is.EqualTo(_expectedAreaName));
+        }
+
         public PageModel Build(string routeName, string hostName)
         {
             string viewName;
@@ -83,7 +96,8 @@ namespace TegCMS.Tests.Controllers
             return new PageModel
                 {
                     ViewName = viewName,
-                    ViewModel = _expectedViewModel
+                    ViewModel = _expectedViewModel,
+                    AreaName = _expectedAreaName
                 };
         }
 
