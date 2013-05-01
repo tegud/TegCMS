@@ -10,9 +10,4 @@ namespace TegCMS.Pages.Data
     {
         PageInformation GetForRouteNameAndHostName(string routeName, string hostName);
     }
-
-    public class PageInformation
-    {
-        public string SiteName { get; set; }
-    }
 }

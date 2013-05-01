@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageModelFactoryTests.cs" />
+    <Compile Include="Data\ObjectPageRepositoryTests.cs" />
+    <Compile Include="Models\PageModelFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ namespace TegCMS.Pages.Models
 
             return new PageModel
                 {
-                    ViewName = string.Format("{0}/{1}", pageInformation.SiteName, "2Column")
+                    ViewName = string.Format("{0}/{1}", pageInformation.SiteName, pageInformation.Layout)
                 };
         }
     }
