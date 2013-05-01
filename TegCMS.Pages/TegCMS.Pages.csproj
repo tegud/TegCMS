@@ -41,10 +41,18 @@
   <ItemGroup>
     <Compile Include="Data\PageInformation.cs" />
     <Compile Include="Data\PageRepository.cs" />
+    <Compile Include="Data\SiteInformation.cs" />
     <Compile Include="Models\IPageModelFactory.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PageModelFactory.cs" />
+    <Compile Include="ObjectPageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TegCMS.ErrorHandling\TegCMS.ErrorHandling.csproj">
+      <Project>{3F38BD75-FE9E-4BF4-AEF0-4C653D00BBE0}</Project>
+      <Name>TegCMS.ErrorHandling</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

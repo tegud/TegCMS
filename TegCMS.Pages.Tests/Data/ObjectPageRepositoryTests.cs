@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using TegCMS.Pages.Data;
+﻿using NUnit.Framework;
+using TegCMS.ErrorHandling;
 
 namespace TegCMS.Pages.Tests.Data
 {
@@ -28,27 +23,5 @@ namespace TegCMS.Pages.Tests.Data
         {
             Assert.Throws<UnknownHostException>(() => new ObjectPageRepository().GetForRouteNameAndHostName(null, "AnotherHostname"));
         }
-
-    }
-
-    public class ObjectPageRepository : IPageRepository
-    {
-        public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
-        {
-            if(hostName != "localhost" && hostName != "www.tegud.net")
-            {
-                throw new UnknownHostException();
-            }
-
-            return new PageInformation
-                {
-                    SiteName = "tegud"
-                };
-        }
-    }
-
-    public class UnknownHostException : Exception
-    {
-        
     }
 }

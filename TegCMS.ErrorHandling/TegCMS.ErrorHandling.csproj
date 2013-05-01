@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C822EF0-5E1A-47F3-879C-27E61BFC93CC}</ProjectGuid>
+    <ProjectGuid>{3F38BD75-FE9E-4BF4-AEF0-4C653D00BBE0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TegCMS.Pages.Tests</RootNamespace>
-    <AssemblyName>TegCMS.Pages.Tests</AssemblyName>
+    <RootNamespace>TegCMS.ErrorHandling</RootNamespace>
+    <AssemblyName>TegCMS.ErrorHandling</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,20 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ObjectPageRepositoryTests.cs" />
-    <Compile Include="Data\SiteInformationTests.cs" />
-    <Compile Include="Models\PageModelFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TegCMS.ErrorHandling\TegCMS.ErrorHandling.csproj">
-      <Project>{3F38BD75-FE9E-4BF4-AEF0-4C653D00BBE0}</Project>
-      <Name>TegCMS.ErrorHandling</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TegCMS.Pages\TegCMS.Pages.csproj">
-      <Project>{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}</Project>
-      <Name>TegCMS.Pages</Name>
-    </ProjectReference>
+    <Compile Include="UnknownHostException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
