@@ -1,6 +1,7 @@
 using System.Web;
 using System.Web.Mvc;
 using TegCMS.Pages;
+using TegCMS.Pages.Data;
 using TegCMS.Pages.Models;
 using TegCMS.Utilities;
 

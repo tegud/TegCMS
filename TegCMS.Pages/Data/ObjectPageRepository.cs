@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using TegCMS.ErrorHandling;
-using TegCMS.Pages.Data;
 
-namespace TegCMS.Pages
+namespace TegCMS.Pages.Data
 {
     public class ObjectPageRepository : IPageRepository
     {

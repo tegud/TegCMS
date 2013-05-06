@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using TegCMS.ErrorHandling;
+using TegCMS.Pages.Data;
 
 namespace TegCMS.Pages.Tests.Data
 {

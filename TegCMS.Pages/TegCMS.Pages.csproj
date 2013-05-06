@@ -39,13 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ObjectPageRepository.cs" />
     <Compile Include="Data\PageInformation.cs" />
-    <Compile Include="Data\PageRepository.cs" />
+    <Compile Include="Data\IPageRepository.cs" />
     <Compile Include="Data\SiteInformation.cs" />
     <Compile Include="Models\IPageModelFactory.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\PageModelFactory.cs" />
-    <Compile Include="ObjectPageRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
