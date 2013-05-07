@@ -1,3 +1,4 @@
+using System.Linq;
 using NUnit.Framework;
 using TegCMS.Pages.Data;
 using TegCMS.Pages.Models;
@@ -41,6 +42,17 @@ namespace TegCMS.Pages.Tests.Models
             var factory = new PageModelFactory(this);
 
             Assert.That(factory.Build("About", "localhost").ViewName, Is.EqualTo("1Column"));   
+        }
+
+        [Test]
+        public void BuildSetsViewModelRegions()
+        {
+            _siteName = "tegud";
+            _layout = "1Column";
+
+            var factory = new PageModelFactory(this);
+
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions.Keys.First(), Is.EqualTo("Head"));  
         }
 
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)

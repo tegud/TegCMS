@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TegCMS.Pages.Data;
 
 namespace TegCMS.Pages.Models
@@ -18,8 +19,33 @@ namespace TegCMS.Pages.Models
             return new PageModel
                 {
                     ViewName = pageInformation.Layout,
-                    AreaName = pageInformation.SiteName
+                    AreaName = pageInformation.SiteName,
+                    ViewModel = new PageViewModel { Regions = new Dictionary<string, PageRegionViewModel> { { "Head", new PageRegionViewModel() } } }
                 };
         }
+    }
+
+    public class PageViewModel
+    {
+        public Dictionary<string, PageRegionViewModel> Regions { get; set; }
+    }
+
+    public class PageRegionViewModel
+    {
+        //public IEnumerable<PageComponentViewModel> Components { get; set; }
+    }
+
+    //public class PageComponentViewModel
+    //{
+    //    public string Controller { get; set; }
+
+    //    public string Action { get; set; }
+
+    //    public HtmlConfiguration Configuration { get; set; }
+    //}
+
+    public class HtmlConfiguration
+    {
+        public string Html { get; set; }
     }
 }

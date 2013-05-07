@@ -13,7 +13,7 @@ namespace TegCMS.Tests.Controllers
     {
         private const string LOCALHOST = "http://localhost";
         private string _expectedViewName = "expectedView";
-        private object _expectedViewModel;
+        private PageViewModel _expectedViewModel;
         private RouteData _routeData;
         private string _url;
         private string _expectedAreaName;
@@ -60,7 +60,7 @@ namespace TegCMS.Tests.Controllers
         [Test]
         public void IndexReturnsSpecifiedViewModel()
         {
-            _expectedViewModel = new Object();
+            _expectedViewModel = new PageViewModel();
 
             _url = LOCALHOST;
             _routeData = new RouteData();
