@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using TegCMS.Pages.Data;
@@ -41,7 +42,7 @@ namespace TegCMS.Pages.Tests.Models
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("About", "localhost").ViewName, Is.EqualTo("1Column"));   
+            Assert.That(factory.Build("About", "localhost").ViewName, Is.EqualTo("1Column"));
         }
 
         [Test]
@@ -52,7 +53,7 @@ namespace TegCMS.Pages.Tests.Models
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("About", "localhost").ViewModel.Regions.Keys.First(), Is.EqualTo("Head"));  
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions.Keys.First(), Is.EqualTo("Head"));
         }
 
         [Test]
@@ -104,7 +105,29 @@ namespace TegCMS.Pages.Tests.Models
             return new PageInformation
                 {
                     SiteName = _siteName,
-                    Layout = _layout
+                    Layout = _layout,
+                    Regions = new Dictionary<string, PageRegionInformation>
+                        {
+                            {
+                                "Head", new PageRegionInformation
+                                    {
+                                        Components = new List<PageComponent>
+                                            {
+                                                new PageComponent
+                                                    {
+                                                        ControllerAction = new PageComponentControllerAction
+                                                            {
+                                                                Controller = "Html"
+                                                            },
+                                                        Configuration = new HtmlConfiguration
+                                                            {
+                                                                Html = "<h1>Another test</h1>"
+                                                            }
+                                                    }
+                                            }
+                                    }
+                            }
+                        }
                 };
         }
     }

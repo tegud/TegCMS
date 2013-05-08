@@ -36,5 +36,17 @@ namespace TegCMS.Pages.Tests.Data
         {
             Assert.That(new ObjectPageRepository().GetForRouteNameAndHostName("About", "www.tegud.net").Layout, Is.EqualTo("1Column"));
         }
+
+        [Test]
+        public void GetForRouteNameAndHostNameSetsHeadRegionForHome()
+        {
+            Assert.That(new ObjectPageRepository().GetForRouteNameAndHostName("Home", "www.tegud.net").Regions.ContainsKey("Head"), Is.True);
+        }
+
+        [Test]
+        public void GetForRouteNameAndHostNameSetsFooterRegionForAbout()
+        {
+            Assert.That(new ObjectPageRepository().GetForRouteNameAndHostName("About", "www.tegud.net").Regions.ContainsKey("Footer"), Is.True);
+        }
     }
 }

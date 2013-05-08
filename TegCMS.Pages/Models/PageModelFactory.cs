@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TegCMS.Pages.Data;
 
 namespace TegCMS.Pages.Models
@@ -20,20 +21,23 @@ namespace TegCMS.Pages.Models
                 {
                     ViewName = pageInformation.Layout,
                     AreaName = pageInformation.SiteName,
-                    ViewModel = new PageViewModel
+                    ViewModel = BuildViewModel(pageInformation.Regions)
+                };
+        }
+
+        private static PageViewModel BuildViewModel(Dictionary<string, PageRegionInformation> regions)
+        {
+            return new PageViewModel
+                {
+                    Regions = regions.ToDictionary(kvp => kvp.Key, kvp => new PageRegionViewModel
                         {
-                            Regions = new Dictionary<string, PageRegionViewModel>
+                            Components = kvp.Value.Components.Select(c => new PageComponentViewModel
                                 {
-                                    { "Head", new PageRegionViewModel
-                                        {
-                                            Components = new List<PageComponentViewModel>
-                                                {
-                                                    new PageComponentViewModel { Controller = "Html", Action = "Index", Configuration = new HtmlConfiguration {Html =  "<h1>Another test</h1>"} }
-                                                }
-                                        } 
-                                    }
-                                }
-                        }
+                                    Action = c.ControllerAction.Action,
+                                    Controller = c.ControllerAction.Controller,
+                                    Configuration = c.Configuration
+                                })
+                        })
                 };
         }
     }

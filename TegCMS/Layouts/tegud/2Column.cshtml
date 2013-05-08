@@ -1,5 +1,4 @@
-﻿@using TegCMS.Pages.Models
-@model TegCMS.Pages.Models.PageViewModel
+﻿@model TegCMS.Pages.Models.PageViewModel
 @{
     Layout = null;
 }
@@ -13,13 +12,17 @@
 </head>
 <body>
     <header>
-        @Html.Action("Index", "Html", new RouteValueDictionary { { "configuration", new HtmlConfiguration { Html = "<h1>Another test</h1>" } } })
+        @foreach(var component in @Model.Regions["Head"].Components) 
+        {
+            @Html.Action(component.Action, component.Controller, new RouteValueDictionary { { "configuration", component.Configuration } })
+        }
     </header>
     
     <div>
-        @Html.Action("Index", "Html", new RouteValueDictionary { { "configuration", new HtmlConfiguration { Html = "<article><h2>One</h2> One, Two, Three</article>" } } })
-        
-        @Html.Action("Index", "Html", new RouteValueDictionary { { "configuration", new HtmlConfiguration { Html = "<article><h2>Two</h2> Four, Five, Six</article>" } } })
+        @foreach(var component in @Model.Regions["Main"].Components) 
+        {
+            @Html.Action(component.Action, component.Controller, new RouteValueDictionary { { "configuration", component.Configuration } })
+        }
     </div>
 </body>
 </html>

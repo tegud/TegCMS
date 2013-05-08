@@ -25,17 +25,28 @@ namespace TegCMS.Pages.Data
             return _regex.IsMatch(hostName);
         }
 
-        public string GetLayout(string routeName)
+        public LayoutAndRegions GetLayoutAndRegions(string routeName)
         {
             var pageRecord = _pageRecords.FirstOrDefault(p => p.RouteName == routeName);
 
-            if(pageRecord == null)
+            if (pageRecord == null)
             {
                 throw new PageNotFoundException();
             }
 
-            return pageRecord.Layout;
+            return new LayoutAndRegions
+            {
+                Layout = pageRecord.Layout,
+                Regions = pageRecord.Regions
+            };
         }
+    }
+
+    public class LayoutAndRegions
+    {
+        public string Layout { get; set; }
+
+        public Dictionary<string, PageRegionInformation> Regions { get; set; }
     }
 
     public class PageRecord
@@ -43,5 +54,7 @@ namespace TegCMS.Pages.Data
         public string RouteName { get; set; }
 
         public string Layout { get; set; }
+
+        public Dictionary<string, PageRegionInformation> Regions { get; set; }
     }
 }
