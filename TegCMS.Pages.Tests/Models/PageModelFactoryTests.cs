@@ -55,6 +55,50 @@ namespace TegCMS.Pages.Tests.Models
             Assert.That(factory.Build("About", "localhost").ViewModel.Regions.Keys.First(), Is.EqualTo("Head"));  
         }
 
+        [Test]
+        public void BuildSetsViewModelRegionComponentController()
+        {
+            _siteName = "tegud";
+            _layout = "1Column";
+
+            var factory = new PageModelFactory(this);
+
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Controller, Is.EqualTo("Html"));
+        }
+
+        [Test]
+        public void BuildSetsViewModelRegionComponentAction()
+        {
+            _siteName = "tegud";
+            _layout = "1Column";
+
+            var factory = new PageModelFactory(this);
+
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Action, Is.EqualTo("Index"));
+        }
+
+        [Test]
+        public void BuildSetsViewModelRegionComponentConfiguration()
+        {
+            _siteName = "tegud";
+            _layout = "1Column";
+
+            var factory = new PageModelFactory(this);
+
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration, Is.TypeOf<HtmlConfiguration>());
+        }
+
+        [Test]
+        public void BuildSetsViewModelRegionComponentConfigurationHtml()
+        {
+            _siteName = "tegud";
+            _layout = "1Column";
+
+            var factory = new PageModelFactory(this);
+
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration.Html, Is.EqualTo("<h1>Another test</h1>"));
+        }
+
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
         {
             return new PageInformation

@@ -20,7 +20,20 @@ namespace TegCMS.Pages.Models
                 {
                     ViewName = pageInformation.Layout,
                     AreaName = pageInformation.SiteName,
-                    ViewModel = new PageViewModel { Regions = new Dictionary<string, PageRegionViewModel> { { "Head", new PageRegionViewModel() } } }
+                    ViewModel = new PageViewModel
+                        {
+                            Regions = new Dictionary<string, PageRegionViewModel>
+                                {
+                                    { "Head", new PageRegionViewModel
+                                        {
+                                            Components = new List<PageComponentViewModel>
+                                                {
+                                                    new PageComponentViewModel { Controller = "Html", Action = "Index", Configuration = new HtmlConfiguration {Html =  "<h1>Another test</h1>"} }
+                                                }
+                                        } 
+                                    }
+                                }
+                        }
                 };
         }
     }
@@ -32,17 +45,17 @@ namespace TegCMS.Pages.Models
 
     public class PageRegionViewModel
     {
-        //public IEnumerable<PageComponentViewModel> Components { get; set; }
+        public IEnumerable<PageComponentViewModel> Components { get; set; }
     }
 
-    //public class PageComponentViewModel
-    //{
-    //    public string Controller { get; set; }
+    public class PageComponentViewModel
+    {
+        public string Controller { get; set; }
 
-    //    public string Action { get; set; }
+        public string Action { get; set; }
 
-    //    public HtmlConfiguration Configuration { get; set; }
-    //}
+        public HtmlConfiguration Configuration { get; set; }
+    }
 
     public class HtmlConfiguration
     {
