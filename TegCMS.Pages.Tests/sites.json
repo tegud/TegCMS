@@ -1,0 +1,26 @@
+﻿[
+	{
+		"SiteName": "Tegud",
+		"Regex": "(tegud\\.net)|(localhost)",
+		"Pages" : [
+			{
+				"RouteName": "",
+				"Layout": "2Column",
+				"Regions": {
+					"Head": [
+						{ 
+							"Controller": "Html",
+							"Action": "Index",
+							"Configuration": {
+								"Html": "<h1>One</h1>"
+							}
+						},
+						{ 
+							"Controller": "Html"
+						}
+					]
+				}
+			}
+		]
+	}
+]

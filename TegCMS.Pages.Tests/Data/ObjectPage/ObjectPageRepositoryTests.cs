@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using TegCMS.ErrorHandling;
-using TegCMS.Pages.Data;
+using TegCMS.Pages.Data.ObjectPage;
 
-namespace TegCMS.Pages.Tests.Data
+namespace TegCMS.Pages.Tests.Data.ObjectPage
 {
     [TestFixture]
     public class ObjectPageRepositoryTests

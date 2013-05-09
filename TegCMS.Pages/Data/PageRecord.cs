@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace TegCMS.Pages.Data
 {
-    public class PageInformation
+    public class PageRecord
     {
-        public string SiteName { get; set; }
+        public string RouteName { get; set; }
 
         public string Layout { get; set; }
 

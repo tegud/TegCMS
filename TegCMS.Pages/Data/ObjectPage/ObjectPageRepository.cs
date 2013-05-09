@@ -3,7 +3,7 @@ using System.Linq;
 using TegCMS.ErrorHandling;
 using TegCMS.Pages.Models;
 
-namespace TegCMS.Pages.Data
+namespace TegCMS.Pages.Data.ObjectPage
 {
     public class ObjectPageRepository : IPageRepository
     {
@@ -91,26 +91,6 @@ namespace TegCMS.Pages.Data
                     Layout = layout.Layout,
                     Regions = layout.Regions
                 };
-        }
-    }
-
-    public class PageComponent
-    {
-        public PageComponentControllerAction ControllerAction { get; set; }
-
-        public HtmlConfiguration Configuration { get; set; }
-    }
-
-    public class PageComponentControllerAction
-    {
-        private string _action = "Index";
-
-        public string Controller { get; set; }
-
-        public string Action
-        {
-            get { return _action; }
-            set { _action = value; }
         }
     }
 }

@@ -23,7 +23,7 @@ namespace TegCMS.Controllers
 
         public PageController()
         {
-            _pageModelFactory = new PageModelFactory(new ObjectPageRepository());
+            _pageModelFactory = new PageModelFactory(MvcApplication.PageRepository);
             _routeDataFactory = new MvcRouteDataFactory();
             _mvcRequestFactory = new MvcRequestFactory();
         }

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
@@ -42,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ObjectPageRepositoryTests.cs" />
+    <Compile Include="Data\Json\JsonPageRepositoryTests.cs" />
+    <Compile Include="Data\ObjectPage\ObjectPageRepositoryTests.cs" />
     <Compile Include="Data\SiteInformationTests.cs" />
     <Compile Include="Models\PageModelFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -56,6 +60,14 @@
       <Project>{E0CE34D6-A31A-4F8A-8BAC-E859E6808B83}</Project>
       <Name>TegCMS.Pages</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sites.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

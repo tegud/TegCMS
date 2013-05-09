@@ -30,8 +30,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,9 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ObjectPageRepository.cs" />
+    <Compile Include="Data\Json\ComponentRecord.cs" />
+    <Compile Include="Data\Json\JsonPageRepository.cs" />
+    <Compile Include="Data\Json\PageRecord.cs" />
+    <Compile Include="Data\Json\SiteRecord.cs" />
+    <Compile Include="Data\LayoutAndRegions.cs" />
+    <Compile Include="Data\ObjectPage\ObjectPageRepository.cs" />
+    <Compile Include="Data\PageComponent.cs" />
+    <Compile Include="Data\PageComponentControllerAction.cs" />
     <Compile Include="Data\PageInformation.cs" />
     <Compile Include="Data\IPageRepository.cs" />
+    <Compile Include="Data\PageRecord.cs" />
+    <Compile Include="Data\PageRegionInformation.cs" />
     <Compile Include="Data\SiteInformation.cs" />
     <Compile Include="Models\IPageModelFactory.cs" />
     <Compile Include="Models\PageModel.cs" />
@@ -53,6 +67,9 @@
       <Project>{3F38BD75-FE9E-4BF4-AEF0-4C653D00BBE0}</Project>
       <Name>TegCMS.ErrorHandling</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
