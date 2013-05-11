@@ -28,17 +28,5 @@ namespace TegCMS.Helpers
 
             return new HtmlString(allHtml.ToString());
         }
-
-
-        //public IHtmlString RenderAction(string region)
-        //{
-
-        //    foreach (var component in Regions[region].Components)
-        //    {
-        //        return ChildActionExtensions.Action(new HtmlHelper(), component.Action, component.Controller,
-        //                                            new RouteValueDictionary { { "configuration", component.Configuration } });
-        //    }
-        //}
-
     }
 }
