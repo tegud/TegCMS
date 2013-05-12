@@ -61,9 +61,9 @@ namespace TegCMS.Pages.Tests.Data.Json
         }
 
         [Test]
-        public void GetForRouteNameAndHostNameSetsComponentConfiguration()
+        public void GetForRouteNameAndHostNameSetsComponentJsonConfiguration()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.First().Configuration.Html, Is.EqualTo("<h1>One</h1>"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.ElementAt(2).Configuration, Is.EqualTo("{ \"Markdown\": \"One\\r\\n===\" }"));
         }
     }
 }

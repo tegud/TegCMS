@@ -6,6 +6,6 @@ namespace TegCMS.Pages.Data
     {
         public PageComponentControllerAction ControllerAction { get; set; }
 
-        public HtmlConfiguration Configuration { get; set; }
+        public string Configuration { get; set; }
     }
 }

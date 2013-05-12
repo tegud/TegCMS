@@ -115,6 +115,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CmsHelper.cs" />
+    <Compile Include="ModelBinding\ChildActionJsonModelBinderProvider.cs" />
+    <Compile Include="ModelBinding\ChildActionJsonModelBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

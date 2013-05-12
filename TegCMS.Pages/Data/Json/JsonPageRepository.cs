@@ -49,10 +49,7 @@ namespace TegCMS.Pages.Data.Json
                                             Controller = c.Controller,
                                             Action = c.Action
                                         },
-                                    Configuration = new HtmlConfiguration
-                                        {
-                                            Html = c.Configuration == null ? "" : c.Configuration.Html
-                                        }
+                                    Configuration = c.Configuration
                                 })
                         })
                 };

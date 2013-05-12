@@ -16,14 +16,14 @@ namespace TegCMS.Tests.Controllers
         }
     }
 
-    [TestFixture]
-    public class MarkdownControllerTests
-    {
-        [Test]
-        public void ReturnsHtmlOfMarkdownSetByConfiguration()
-        {
-            var content = new MarkdownController().Index(new MarkdownConfiguration { Markdown = string.Format("Test{0}====", Environment.NewLine) }).Content;
-            Assert.That(content, Is.EqualTo("<h1>Test</h1>\n"));
-        }
-    }
+    //[TestFixture]
+    //public class MarkdownControllerTests
+    //{
+    //    [Test]
+    //    public void ReturnsHtmlOfMarkdownSetByConfiguration()
+    //    {
+    //        var content = new MarkdownController().Index(new MarkdownConfiguration { Markdown = string.Format("Test{0}====", Environment.NewLine) }).Content;
+    //        Assert.That(content, Is.EqualTo("<h1>Test</h1>\n"));
+    //    }
+    //}
 }

@@ -8,6 +8,8 @@ namespace TegCMS.Pages.Data.Json
 
         public string Action { get; set; }
 
-        public HtmlConfiguration Configuration { get; set; }
+        public string Configuration { get; set; }
+
+        public string JsonConfiguration { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace TegCMS.Pages.Data.ObjectPage
                                                     new PageComponent
                                                     {
                                                         ControllerAction = new PageComponentControllerAction { Controller = "Html" },
-                                                        Configuration = new HtmlConfiguration { Html = "<h1>Test</h1>" }
+                                                        Configuration = "{ Html = \"<h1>Test</h1>\" }"
                                                     }
                                                 }
                                             } 
@@ -38,12 +38,12 @@ namespace TegCMS.Pages.Data.ObjectPage
                                                     new PageComponent
                                                     {
                                                         ControllerAction = new PageComponentControllerAction { Controller = "Html" },
-                                                        Configuration = new HtmlConfiguration { Html = "<article><h2>One</h2></article>" }
+                                                        Configuration = "{ Html = \"<article><h2>One</h2></article>\" }"
                                                     },
                                                     new PageComponent
                                                     {
                                                         ControllerAction = new PageComponentControllerAction { Controller = "Html" },
-                                                        Configuration = new HtmlConfiguration { Html = "<article><h2>Two</h2></article>" }
+                                                        Configuration = "{ Html = \"<article><h2>Two</h2></article>\" }"
                                                     }
                                                 }
                                             } 
@@ -62,7 +62,7 @@ namespace TegCMS.Pages.Data.ObjectPage
                                                     new PageComponent
                                                     {
                                                         ControllerAction = new PageComponentControllerAction { Controller = "Html" },
-                                                        Configuration = new HtmlConfiguration { Html = "<h1>Test</h1>" }
+                                                        Configuration = "{ Html = \"<h1>Test</h1>\" }"
                                                     }
                                                 }
                                             } 

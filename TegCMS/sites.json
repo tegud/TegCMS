@@ -8,31 +8,27 @@
 				"Layout": "2Column",
 				"Regions": {
 					"Head": [
-						{ 
-							"Controller": "Html",
-							"Configuration": {
-								"Html": "<h1>This is a title</h1>"
-							}
+						{
+							"Controller": "Markdown",
+							"Configuration": "{ \"Markdown\": \"CMS Test Page\\r\\n===\" }"
 						}
 					],
 					"Main": [
 						{ 
 							"Controller": "Html",
-							"Configuration": {
-								"Html": "<h2>One</h2>"
-							}
+							"Configuration": "{ \"Html\": \"<h2>One</h2>\" }"
 						},
 						{ 
 							"Controller": "Html",
-							"Configuration": {
-								"Html": "<h2>Two</h2>"
-							}
+							"Configuration": "{ \"Html\": \"<h2>Two</h2>\" }"
 						},
 						{ 
 							"Controller": "Html",
-							"Configuration": {
-								"Html": "<h2>Three</h2>"
-							}
+							"Configuration": "{ \"Html\": \"<h2>Three</h2>\" }"
+						},
+						{
+							"Controller": "Markdown",
+							"Configuration": "{ \"Markdown\": \"### List\\r\\n* Item 1\\r\\n* Item 2\\r\\n* Item 3\\r\\n### Image\\r\\n ![Google](https://www.google.com/images/srpr/logo4w.png)\" }"
 						}
 					]
 				}

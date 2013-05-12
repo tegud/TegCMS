@@ -62,7 +62,7 @@ namespace TegCMS.Pages.Models
 
         public string Action { get; set; }
 
-        public HtmlConfiguration Configuration { get; set; }
+        public string Configuration { get; set; }
     }
 
     public class HtmlConfiguration

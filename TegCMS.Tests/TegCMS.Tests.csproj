@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Controllers\HtmlControllerTests.cs" />
     <Compile Include="Controllers\PageControllerTests.cs" />
+    <Compile Include="ModelBinding\ChildActionJsonModelBinderProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

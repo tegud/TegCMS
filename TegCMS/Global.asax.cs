@@ -3,6 +3,7 @@ using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using TegCMS.ModelBinding;
 using TegCMS.Pages.Data;
 using TegCMS.Pages.Data.Json;
 
@@ -31,6 +32,8 @@ namespace TegCMS
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ModelBinderProviders.BinderProviders.Add(new ChildActionJsonModelBinderProvider());
             
             var sitesFile = HostingEnvironment.MapPath("~/sites.json");
             PageRepository = new JsonPageRepository(sitesFile);

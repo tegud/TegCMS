@@ -79,17 +79,6 @@ namespace TegCMS.Pages.Tests.Models
         }
 
         [Test]
-        public void BuildSetsViewModelRegionComponentConfiguration()
-        {
-            _siteName = "tegud";
-            _layout = "1Column";
-
-            var factory = new PageModelFactory(this);
-
-            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration, Is.TypeOf<HtmlConfiguration>());
-        }
-
-        [Test]
         public void BuildSetsViewModelRegionComponentConfigurationHtml()
         {
             _siteName = "tegud";
@@ -97,7 +86,7 @@ namespace TegCMS.Pages.Tests.Models
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration.Html, Is.EqualTo("<h1>Another test</h1>"));
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration, Is.EqualTo("<h1>Another test</h1>"));
         }
 
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
@@ -119,10 +108,7 @@ namespace TegCMS.Pages.Tests.Models
                                                             {
                                                                 Controller = "Html"
                                                             },
-                                                        Configuration = new HtmlConfiguration
-                                                            {
-                                                                Html = "<h1>Another test</h1>"
-                                                            }
+                                                        Configuration = "<h1>Another test</h1>"
                                                     }
                                             }
                                     }
