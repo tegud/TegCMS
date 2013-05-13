@@ -4,7 +4,7 @@ namespace TegCMS.Pages.Data.Json
 {
     public class PageRecord
     {
-        public string RouteName { get; set; }
+        public RouteRecord Route { get; set; }
 
         public string Layout { get; set; }
 

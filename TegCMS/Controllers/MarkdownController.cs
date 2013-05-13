@@ -10,10 +10,6 @@ namespace TegCMS.Controllers
     {
         public ContentResult Index(MarkdownConfiguration configuration)
         {
-            var serializer = new JavaScriptSerializer();
-            var jsonData = serializer.Deserialize<MarkdownConfiguration>("{ \"Markdown\": \"One\\r\\n===\" }");
-            var jsonData2 = JsonConvert.DeserializeObject<MarkdownConfiguration>("{ \"Markdown\": \"One\\r\\n===\" }");
-
             var md = new MarkdownDeep.Markdown();
 
             return Content(md.Transform(configuration.Markdown));

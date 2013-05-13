@@ -3,6 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using TegCMS.ErrorHandling;
 using TegCMS.Pages.Data.Json;
+using TegCMS.Pages.Models;
 
 namespace TegCMS.Pages.Tests.Data.Json
 {
@@ -12,20 +13,20 @@ namespace TegCMS.Pages.Tests.Data.Json
         [Test]
         public void GetForRouteNameAndHostNameSetsSiteName()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").SiteName, Is.EqualTo("Tegud"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").SiteName, Is.EqualTo("Tegud"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameThrowsSiteNotFoundExceptionForUnknownSite()
         {
             Assert.Throws<UnknownHostException>(
-                () => new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "Unknown Site"));
+                () => new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "Unknown Site"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameSetsLayout()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Layout, Is.EqualTo("2Column"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Layout, Is.EqualTo("2Column"));
         }
 
         [Test]
@@ -39,31 +40,43 @@ namespace TegCMS.Pages.Tests.Data.Json
         [Test]
         public void GetForRouteNameAndHostNameSetsRegion()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions.Keys.First(), Is.EqualTo("Head"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions.Keys.First(), Is.EqualTo("Head"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameSetsComponentController()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.First().ControllerAction.Controller, Is.EqualTo("Html"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.First().ControllerAction.Controller, Is.EqualTo("Html"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameSetsComponentAction()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.First().ControllerAction.Action, Is.EqualTo("Index"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.First().ControllerAction.Action, Is.EqualTo("Index"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameComponentActionDefaultsToIndex()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.ElementAt(1).ControllerAction.Action, Is.EqualTo("Index"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.ElementAt(1).ControllerAction.Action, Is.EqualTo("Index"));
         }
 
         [Test]
         public void GetForRouteNameAndHostNameSetsComponentJsonConfiguration()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("", "www.tegud.net").Regions["Head"].Components.ElementAt(2).Configuration, Is.EqualTo("{ \"Markdown\": \"One\\r\\n===\" }"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.ElementAt(2).Configuration, Is.EqualTo("{ \"Markdown\": \"One\\r\\n===\" }"));
+        }
+
+        [Test]
+        public void GetAllRoutesReturnsCmsRouteCollection()
+        {
+            Assert.That(new JsonPageRepository("sites.json").GetAllRoutes(), Is.TypeOf<CmsRouteCollection>());
+        }
+
+        [Test]
+        public void GetAllRoutesSetsFirstRouteName()
+        {
+            Assert.That(new JsonPageRepository("sites.json").GetAllRoutes().Routes.First(), Is.TypeOf<CmsRouteCollection>());
         }
     }
 }

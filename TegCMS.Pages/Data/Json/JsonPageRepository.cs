@@ -29,7 +29,7 @@ namespace TegCMS.Pages.Data.Json
                 throw new UnknownHostException();
             }
 
-            var pageRecord = siteRecord.Pages.FirstOrDefault(p => p.RouteName == routeName);
+            var pageRecord = siteRecord.Pages.FirstOrDefault(p => p.Route.Name == routeName);
 
             if (pageRecord == null)
             {
@@ -53,6 +53,11 @@ namespace TegCMS.Pages.Data.Json
                                 })
                         })
                 };
+        }
+
+        public CmsRouteCollection GetAllRoutes()
+        {
+            return new CmsRouteCollection();
         }
     }
 }

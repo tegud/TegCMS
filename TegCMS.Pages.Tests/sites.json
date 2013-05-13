@@ -4,7 +4,10 @@
 		"Regex": "(tegud\\.net)|(localhost)",
 		"Pages" : [
 			{
-				"RouteName": "",
+				"Route": {
+					"Name": "Home",
+					"Url": "/"
+				},
 				"Layout": "2Column",
 				"Regions": {
 					"Head": [

@@ -50,6 +50,7 @@
     <Compile Include="Data\Json\ComponentRecord.cs" />
     <Compile Include="Data\Json\JsonPageRepository.cs" />
     <Compile Include="Data\Json\PageRecord.cs" />
+    <Compile Include="Data\Json\RouteRecord.cs" />
     <Compile Include="Data\Json\SiteRecord.cs" />
     <Compile Include="Data\LayoutAndRegions.cs" />
     <Compile Include="Data\ObjectPage\ObjectPageRepository.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Data\PageRecord.cs" />
     <Compile Include="Data\PageRegionInformation.cs" />
     <Compile Include="Data\SiteInformation.cs" />
+    <Compile Include="Models\CmsRouteCollection.cs" />
     <Compile Include="Models\IPageModelFactory.cs" />
     <Compile Include="Models\MarkdownConfiguration.cs" />
     <Compile Include="Models\PageModel.cs" />
