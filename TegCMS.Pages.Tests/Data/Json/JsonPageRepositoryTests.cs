@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
+using Newtonsoft.Json.Linq;
 using TegCMS.ErrorHandling;
 using TegCMS.Pages.Data.Json;
 using TegCMS.Pages.Models;
@@ -64,7 +65,7 @@ namespace TegCMS.Pages.Tests.Data.Json
         [Test]
         public void GetForRouteNameAndHostNameSetsComponentJsonConfiguration()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.ElementAt(2).Configuration, Is.EqualTo("{ \"Markdown\": \"One\\r\\n===\" }"));
+            Assert.That(new JsonPageRepository("sites.json").GetForRouteNameAndHostName("Home", "www.tegud.net").Regions["Head"].Components.ElementAt(2).Configuration, Is.EqualTo(JObject.FromObject(new { Markdown = "One\r\n===" })));
         }
 
         [Test]

@@ -13,25 +13,35 @@
 					"Head": [
 						{
 							"Controller": "Markdown",
-							"Configuration": "{ \"Markdown\": \"CMS Test Page\\r\\n===\" }"
+							"Configuration": { 
+								"Markdown": "CMS Test Page\r\n===" 
+							}
 						}
 					],
 					"Main": [
 						{ 
-							"Controller": "Html",
-							"Configuration": "{ \"Html\": \"<h2>One</h2>\" }"
+							"Controller": "Markdown",
+							"Configuration": { 
+								"Markdown": "##One\r\n[About Me](/About)" 
+							}
 						},
 						{ 
 							"Controller": "Html",
-							"Configuration": "{ \"Html\": \"<h2>Two</h2>\" }"
+							"Configuration": { 
+								"Html": "<h2>Two</h2>" 
+							}
 						},
 						{ 
 							"Controller": "Html",
-							"Configuration": "{ \"Html\": \"<h2>Three</h2>\" }"
+							"Configuration": {
+								"Html": "<h2>Three</h2>" 
+							}
 						},
 						{
 							"Controller": "Markdown",
-							"Configuration": "{ \"Markdown\": \"### List\\r\\n* Item 1\\r\\n* Item 2\\r\\n* Item 3\\r\\n### Image\\r\\n ![Google](https://www.google.com/images/srpr/logo4w.png)\" }"
+							"Configuration": { 
+								"Markdown": "### List\r\n* Item 1\r\n* Item 2\r\n* Item 3\r\n### Image\r\n ![Google](https://www.google.com/images/srpr/logo4w.png)" 
+							}
 						}
 					]
 				}
@@ -46,13 +56,17 @@
 					"Head": [
 						{
 							"Controller": "Markdown",
-							"Configuration": "{ \"Markdown\": \"About Me\\r\\n===\" }"
+							"Configuration": { 
+								"Markdown": "About Me\r\n===" 
+							}
 						}
 					],
 					"Main": [
 						{
 							"Controller": "Markdown",
-							"Configuration": "{ \"Markdown\": \"This is a test of my website platform\" }"
+							"Configuration": { 
+								"Markdown": "This is a test of my website platform" 
+							}
 						}
 					]
 				}

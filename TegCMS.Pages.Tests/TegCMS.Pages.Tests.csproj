@@ -51,7 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Json\JsonPageRepositoryTests.cs" />
-    <Compile Include="Data\ObjectPage\ObjectPageRepositoryTests.cs" />
     <Compile Include="Data\SiteInformationTests.cs" />
     <Compile Include="Models\CmsRouteCollectionTests.cs" />
     <Compile Include="Models\PageModelFactoryTests.cs" />

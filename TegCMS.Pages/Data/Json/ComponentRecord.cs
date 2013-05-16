@@ -1,4 +1,4 @@
-using TegCMS.Pages.Models;
+using Newtonsoft.Json.Linq;
 
 namespace TegCMS.Pages.Data.Json
 {
@@ -8,8 +8,6 @@ namespace TegCMS.Pages.Data.Json
 
         public string Action { get; set; }
 
-        public string Configuration { get; set; }
-
-        public string JsonConfiguration { get; set; }
+        public JObject Configuration { get; set; }
     }
 }

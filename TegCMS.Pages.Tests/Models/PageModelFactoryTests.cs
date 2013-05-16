@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Newtonsoft.Json.Linq;
 using TegCMS.Pages.Data;
 using TegCMS.Pages.Models;
 
@@ -86,7 +87,7 @@ namespace TegCMS.Pages.Tests.Models
 
             var factory = new PageModelFactory(this);
 
-            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration, Is.EqualTo("<h1>Another test</h1>"));
+            Assert.That(factory.Build("About", "localhost").ViewModel.Regions["Head"].Components.First().Configuration["Html"].ToString(), Is.EqualTo("<h1>Another test</h1>"));
         }
 
         public PageInformation GetForRouteNameAndHostName(string routeName, string hostName)
@@ -108,7 +109,7 @@ namespace TegCMS.Pages.Tests.Models
                                                             {
                                                                 Controller = "Html"
                                                             },
-                                                        Configuration = "<h1>Another test</h1>"
+                                                        Configuration = JObject.FromObject(new { Html = "<h1>Another test</h1>" })
                                                     }
                                             }
                                     }

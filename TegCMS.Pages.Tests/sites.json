@@ -14,14 +14,18 @@
 						{ 
 							"Controller": "Html",
 							"Action": "Index",
-							"Configuration": "{ \"Html\": \"<h1>One</h1>\" }"
+							"Configuration": { 
+								"Html": "<h1>One</h1>" 
+							}
 						},
 						{ 
 							"Controller": "Html"
 						},
 						{
 							"Controller": "Markdown",
-							"Configuration": "{ \"Markdown\": \"One\\r\\n===\" }"
+							"Configuration": { 
+								"Markdown": "One\r\n===" 
+							}
 						}
 					]
 				}

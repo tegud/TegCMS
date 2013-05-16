@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
+using Newtonsoft.Json.Linq;
 using TegCMS.Pages.Data;
 
 namespace TegCMS.Pages.Models
@@ -62,7 +63,7 @@ namespace TegCMS.Pages.Models
 
         public string Action { get; set; }
 
-        public string Configuration { get; set; }
+        public JObject Configuration { get; set; }
     }
 
     public class HtmlConfiguration

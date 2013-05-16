@@ -1,6 +1,7 @@
 using System;
 using System.Web.Mvc;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace TegCMS.ModelBinding
 {
@@ -17,8 +18,8 @@ namespace TegCMS.ModelBinding
 
             try
             {
-                var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName).AttemptedValue;
-                deserializedObject = JsonConvert.DeserializeObject(value, bindingContext.ModelType);
+                var value = bindingContext.ValueProvider.GetValue(bindingContext.ModelName).RawValue as JObject;
+                deserializedObject = value.ToObject(bindingContext.ModelType);
             }
             catch (Exception)
             {

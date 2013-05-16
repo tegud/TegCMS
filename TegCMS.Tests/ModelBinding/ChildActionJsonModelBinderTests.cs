@@ -1,22 +1,12 @@
 ﻿using System.Collections.Specialized;
 using System.Web.Mvc;
 using NUnit.Framework;
+using Newtonsoft.Json.Linq;
 using TegCMS.ModelBinding;
 using TegCMS.Pages.Models;
 
 namespace TegCMS.Tests.ModelBinding
 {
-    [TestFixture]
-    public class ChildActionJsonModelBinderProviderTests
-    {
-        [Test]
-        public void GetBinderReturnsChildActionJsonModelBinder()
-        {
-            Assert.That(new ChildActionJsonModelBinderProvider().GetBinder(typeof(object)),
-                        Is.TypeOf<ChildActionJsonModelBinder>());
-        }
-    }
-
     [TestFixture]
     public class ChildActionJsonModelBinderTests
     {
@@ -35,14 +25,14 @@ namespace TegCMS.Tests.ModelBinding
         }
 
         [Test]
-        public void ChildActionRequestWithBlankStringReturnsNull()
+        public void ChildActionRequestWithNonMatchingJObjectStringReturnsNull()
         {
             var childActionJsonModelBinder = new ChildActionJsonModelBinder();
 
             var controllerContext = new ControllerContext();
 
             controllerContext.RouteData.DataTokens.Add("ParentActionViewContext", true);
-            controllerContext.RouteData.DataTokens.Add("configuration", string.Empty);
+            controllerContext.RouteData.DataTokens.Add("configuration", JObject.FromObject(new { x = 12345 }));
 
             var modelBindingContext = new ModelBindingContext
             {
@@ -58,21 +48,19 @@ namespace TegCMS.Tests.ModelBinding
         [Test]
         public void ChildActionRequestWithValidHtmlConfigurationStringReturnsHtmlConfiguration()
         {
-            var formCollection = new NameValueCollection 
+            var values = new ValueProviderDictionary(null)
                 {
-                    { "configuration", "{ \"Markdown\": \"One===\" }" }
+                    {"configuration", JObject.FromObject(new {Markdown = "One==="})},
                 };
 
             var childActionJsonModelBinder = new ChildActionJsonModelBinder();
 
             var controllerContext = new ControllerContext();
-
             controllerContext.RouteData.DataTokens.Add("ParentActionViewContext", true);
-            controllerContext.RouteData.DataTokens.Add("", "");
 
             var modelBindingContext = new ModelBindingContext
             {
-                ValueProvider = new NameValueCollectionValueProvider(formCollection, null),
+                ValueProvider = values, 
                 ModelName = "configuration",
                 ModelMetadata = ModelMetadataProviders.Current.GetMetadataForType(null, typeof(MarkdownConfiguration))
             };

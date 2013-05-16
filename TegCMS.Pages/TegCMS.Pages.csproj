@@ -53,7 +53,6 @@
     <Compile Include="Data\Json\RouteRecord.cs" />
     <Compile Include="Data\Json\SiteRecord.cs" />
     <Compile Include="Data\LayoutAndRegions.cs" />
-    <Compile Include="Data\ObjectPage\ObjectPageRepository.cs" />
     <Compile Include="Data\PageComponent.cs" />
     <Compile Include="Data\PageComponentControllerAction.cs" />
     <Compile Include="Data\PageInformation.cs" />
