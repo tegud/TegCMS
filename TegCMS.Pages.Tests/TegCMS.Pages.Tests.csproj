@@ -41,6 +41,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,7 +53,11 @@
     <Compile Include="Data\Json\JsonPageRepositoryTests.cs" />
     <Compile Include="Data\ObjectPage\ObjectPageRepositoryTests.cs" />
     <Compile Include="Data\SiteInformationTests.cs" />
+    <Compile Include="Models\CmsRouteCollectionTests.cs" />
     <Compile Include="Models\PageModelFactoryTests.cs" />
+    <Compile Include="Models\StubHttpContextForRouting.cs" />
+    <Compile Include="Models\StubHttpRequestForRouting.cs" />
+    <Compile Include="Models\StubHttpResponseForRouting.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

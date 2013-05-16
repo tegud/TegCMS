@@ -8,7 +8,7 @@ namespace TegCMS.Pages.Data.Json
 {
     public class JsonPageRepository : IPageRepository
     {
-        private SiteRecord[] _siteRecords;
+        private readonly SiteRecord[] _siteRecords;
 
         public JsonPageRepository(string fileName)
         {
@@ -57,7 +57,11 @@ namespace TegCMS.Pages.Data.Json
 
         public CmsRouteCollection GetAllRoutes()
         {
-            return new CmsRouteCollection();
+            return new CmsRouteCollection(_siteRecords.SelectMany(s => s.Pages.Select(p => new CmsRoute
+                {
+                    Name = p.Route.Name,
+                    Url = p.Route.Url
+                })));
         }
     }
 }

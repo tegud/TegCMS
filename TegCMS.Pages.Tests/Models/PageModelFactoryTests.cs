@@ -116,5 +116,10 @@ namespace TegCMS.Pages.Tests.Models
                         }
                 };
         }
+
+        public CmsRouteCollection GetAllRoutes()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

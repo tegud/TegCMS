@@ -92,5 +92,10 @@ namespace TegCMS.Pages.Data.ObjectPage
                     Regions = layout.Regions
                 };
         }
+
+        public CmsRouteCollection GetAllRoutes()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -6,7 +6,7 @@
 			{
 				"Route": {
 					"Name": "",
-					"Url": "/"
+					"Url": ""
 				},
 				"Layout": "2Column",
 				"Regions": {
@@ -32,6 +32,27 @@
 						{
 							"Controller": "Markdown",
 							"Configuration": "{ \"Markdown\": \"### List\\r\\n* Item 1\\r\\n* Item 2\\r\\n* Item 3\\r\\n### Image\\r\\n ![Google](https://www.google.com/images/srpr/logo4w.png)\" }"
+						}
+					]
+				}
+			},
+			{
+				"Route": {
+					"Name": "AboutMe",
+					"Url": "About"
+				},
+				"Layout": "2Column",
+				"Regions": {
+					"Head": [
+						{
+							"Controller": "Markdown",
+							"Configuration": "{ \"Markdown\": \"About Me\\r\\n===\" }"
+						}
+					],
+					"Main": [
+						{
+							"Controller": "Markdown",
+							"Configuration": "{ \"Markdown\": \"This is a test of my website platform\" }"
 						}
 					]
 				}

@@ -76,7 +76,13 @@ namespace TegCMS.Pages.Tests.Data.Json
         [Test]
         public void GetAllRoutesSetsFirstRouteName()
         {
-            Assert.That(new JsonPageRepository("sites.json").GetAllRoutes().Routes.First(), Is.TypeOf<CmsRouteCollection>());
+            Assert.That(new JsonPageRepository("sites.json").GetAllRoutes().Routes.First().Name, Is.EqualTo("Home"));
+        }
+
+        [Test]
+        public void GetAllRoutesSetsFirstRouteUrl()
+        {
+            Assert.That(new JsonPageRepository("sites.json").GetAllRoutes().Routes.First().Url, Is.EqualTo("/"));
         }
     }
 }

@@ -27,16 +27,18 @@ namespace TegCMS
 
             ViewEngines.Engines.Add(razorEngine);
 
+            var sitesFile = HostingEnvironment.MapPath("~/sites.json");
+            PageRepository = new JsonPageRepository(sitesFile);
+
             AreaRegistration.RegisterAllAreas();
+
+            PageRepository.GetAllRoutes().AddRoutesToRouteTable(RouteTable.Routes);
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             ModelBinderProviders.BinderProviders.Add(new ChildActionJsonModelBinderProvider());
-            
-            var sitesFile = HostingEnvironment.MapPath("~/sites.json");
-            PageRepository = new JsonPageRepository(sitesFile);
         }
     }
 }
