@@ -1,6 +1,5 @@
 using System.Web;
 using System.Web.Mvc;
-using TegCMS.Pages.Data;
 using TegCMS.Pages.Models;
 using TegCMS.Utilities;
 
@@ -19,13 +18,6 @@ namespace TegCMS.Controllers
             _pageModelFactory = pageModelFactory;
             _routeDataFactory = routeDataFactory;
             _mvcRequestFactory = mvcRequestFactory;
-        }
-
-        public PageController()
-        {
-            _pageModelFactory = new PageModelFactory(MvcApplication.PageRepository);
-            _routeDataFactory = new MvcRouteDataFactory();
-            _mvcRequestFactory = new MvcRequestFactory();
         }
 
         public ViewResult Index()
