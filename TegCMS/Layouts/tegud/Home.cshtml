@@ -147,6 +147,12 @@
 
             TEGUD.BlogSideBar = function (element) {
                 var blogSideTop = element.offset().top - 51;
+                var options = $('.blog-sidebar-options', element);
+
+                options.on('click', 'a', function () {
+
+                    return false;
+                });
 
                 TEGUD.subscribe('TEGUD.Page.Scroll', function (currentTopScroll) {
                     if (currentTopScroll > blogSideTop) {
