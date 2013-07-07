@@ -8,7 +8,7 @@
 					"Name": "",
 					"Url": ""
 				},
-				"Layout": "2Column",
+				"Layout": "Home",
 				"Regions": {
 					"Head": [
 						{
@@ -49,7 +49,7 @@
 			{
 				"Route": {
 					"Name": "AboutMe",
-					"Url": "About"
+					"Url": "me"
 				},
 				"Layout": "2Column",
 				"Regions": {
