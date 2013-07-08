@@ -50,12 +50,50 @@
                     <nav class="blog-sidebar-options">
                         <div class="blog-sidebar-options-marker"></div>
                         <ul>
-                            <li class="info selected"><a href=""></a></li>
-                            <li class="tags"><a href=""></a></li>
-                            <li class="archive"><a href=""></a></li>
-                            <li class="search"><a href=""></a></li>
+                            <li class="info selected" data-panel-id="blog-info" data-header-class="blog-sidebar-item-info"><a href=""></a></li>
+                            <li class="tags" data-panel-id="tag-cloud" data-header-class="blog-sidebar-tag-cloud"><a href=""></a></li>
+                            <li class="archive" data-panel-id="tag-archive" data-header-class="blog-sidebar-archive"><a href=""></a></li>
+                            <li class="search" data-panel-id="blog-search" data-header-class="blog-sidebar-search"><a href=""></a></li>
                         </ul>
                     </nav>
+                    <div class="blog-sidebar-inner">
+                        <ul class="blog-sidebar-headers">
+                            <li>Item Info</li>
+                        </ul>
+                        <div class="blog-sidebar-content-container">
+                            <div class="blog-sidebar-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-sidebar-panel" id="blog-info">
+                <h3>Item Info</h3>
+                <div class="blog-sidebar-panel-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                </div>
+            </div>
+            
+            <div class="blog-sidebar-panel" id="tag-cloud">
+                <h3>Tag Cloud</h3>
+                <div class="blog-sidebar-panel-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                </div>
+            </div>
+            
+            <div class="blog-sidebar-panel" id="tag-archive">
+                <h3>Archive</h3>
+                <div class="blog-sidebar-panel-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
+                </div>
+            </div>
+            
+            <div class="blog-sidebar-panel" id="blog-search">
+                <h3>Search</h3>
+                <div class="blog-sidebar-panel-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
                 </div>
             </div>
         </div>
@@ -111,7 +149,6 @@
                 </footer>
             </article>
         </div>
-        
     </div>
     
     <footer>Copyright Steve Elliott 2013</footer>
@@ -148,8 +185,63 @@
             TEGUD.BlogSideBar = function (element) {
                 var blogSideTop = element.offset().top - 51;
                 var options = $('.blog-sidebar-options', element);
+                var marker = $('.blog-sidebar-options-marker', options);
+                var headers = $('.blog-sidebar-headers', element).css('left', 0);
+                var panels = $('.blog-sidebar-panel').hide();
+                var contentContainer = $('.blog-sidebar-content-container', element);
+                var markerHeight = marker.height();
+                
+                function selectPanel(panel) {
+                    var headerText = $('h3', '#' + panel).text();
+                    var content = '';
+
+                    selectPanelHeader(headerText);
+                    selectPanelContent(content);
+                }
+                
+                function selectPanelHeader(headerText) {
+                    headers
+                        .append($('<li />', {
+                            'text': headerText
+                        }))
+                        .addClass('animated-header')
+                        .css('left', -200);
+                }
+
+                function selectHeaderAnimationCompleted() {
+                    if(headers.children().size() == 1) {
+                        return;
+                    }
+
+                    headers
+                        .children(':first').remove().end()
+                        .removeClass('animated-header').css('left', 0);
+                }
+                
+                function selectPanelContent() {
+
+                }
+
+                function selectItem(item) {
+                    if (headers.children().size() > 1) {
+                        return;
+                    }
+                    
+                    var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
+                    var panel = item.data('panelId');
+
+                    marker.css('top', topPosition);
+                    item.addClass('selected').siblings().removeClass('selected');
+
+                    selectPanel(panel);
+                }
+
+                headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectHeaderAnimationCompleted);
 
                 options.on('click', 'a', function () {
+                    var item = $(this).parent();
+
+                    selectItem(item);
 
                     return false;
                 });
