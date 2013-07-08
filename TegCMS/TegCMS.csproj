@@ -134,6 +134,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Content Include="Assets\Tegud\css\site.css" />
+    <Content Include="Assets\Tegud\images\archive3_black.png" />
+    <Content Include="Assets\Tegud\images\blog-icons.png" />
+    <Content Include="Assets\Tegud\images\blog-options.png" />
+    <Content Include="Assets\Tegud\images\facebook.png" />
+    <Content Include="Assets\Tegud\images\flickr.png" />
+    <Content Include="Assets\Tegud\images\github.png" />
+    <Content Include="Assets\Tegud\images\google-plus.png" />
+    <Content Include="Assets\Tegud\images\linkedin.png" />
+    <Content Include="Assets\Tegud\images\social-icons.png" />
+    <Content Include="Assets\Tegud\images\stackoverflow.png" />
+    <Content Include="Assets\Tegud\images\twitter.png" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -146,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Tegud\images\" />
     <Folder Include="Assets\Tegud\js\" />
     <Folder Include="Models\" />
     <Folder Include="Modules\" />
