@@ -61,9 +61,7 @@
                             <li>Item Info</li>
                         </ul>
                         <div class="blog-sidebar-content-container">
-                            <div class="blog-sidebar-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
-                            </div>
+                            <div class="blog-sidebar-content"></div>
                         </div>
                     </div>
                 </div>
@@ -72,28 +70,28 @@
             <div class="blog-sidebar-panel" id="blog-info">
                 <h3>Item Info</h3>
                 <div class="blog-sidebar-panel-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                    [Info] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
                 </div>
             </div>
             
             <div class="blog-sidebar-panel" id="tag-cloud">
                 <h3>Tag Cloud</h3>
                 <div class="blog-sidebar-panel-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                    [Tags] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
                 </div>
             </div>
             
             <div class="blog-sidebar-panel" id="tag-archive">
                 <h3>Archive</h3>
                 <div class="blog-sidebar-panel-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
+                    [Archive] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
                 </div>
             </div>
             
             <div class="blog-sidebar-panel" id="blog-search">
                 <h3>Search</h3>
                 <div class="blog-sidebar-panel-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
+                    [Search] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
                 </div>
             </div>
         </div>
@@ -154,137 +152,18 @@
     <footer>Copyright Steve Elliott 2013</footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/nanoMachine.js"></script>
+    <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/Tegud.js"></script>
+    <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/Tegud.Utilities.js"></script>
+    <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/Tegud.PageFramework.js"></script>
+    
+    <script type="text/javascript" src="~/Assets/Tegud/js/Modules/BlogSideBar/BlogSideBar.js"></script>
+    <script type="text/javascript" src="~/Assets/Tegud/js/Modules/Menu/Menu.js"></script>
+
     <script type="text/javascript">
-        var TEGUD = { };
-
-        (function (d) { var e = d.c_ || {}; d.publish = function (a, b) { for (var c = e[a], f = c ? c.length : 0; f--;) c[f].apply(d, b || []) }; d.subscribe = function (a, b) { e[a] || (e[a] = []); e[a].push(b); return [a, b] }; d.unsubscribe = function (a) { for (var b = e[a[0]], a = a[1], c = b ? b.length : 0; c--;) b[c] === a && b.splice(c, 1) } })(TEGUD);
-
+        
         (function () {
-            TEGUD.Utilities = {};
-
-            TEGUD.Utilities.ThrottledFunction = function (code, throttleRate) {
-                var scrollThrottler;
-                var throttledFunction = function () {
-                    if (scrollThrottler) {
-                        return;
-                    }
-
-                    code();
-
-                    if (!scrollThrottler) {
-                        scrollThrottler = setTimeout(function () {
-                            clearTimeout(scrollThrottler);
-                            scrollThrottler = false;
-                        }, throttleRate);
-                    }
-                };
-
-                return throttledFunction;
-            };
-
-            TEGUD.BlogSideBar = function (element) {
-                var blogSideTop = element.offset().top - 51;
-                var options = $('.blog-sidebar-options', element);
-                var marker = $('.blog-sidebar-options-marker', options);
-                var headers = $('.blog-sidebar-headers', element).css('left', 0);
-                var panels = $('.blog-sidebar-panel').hide();
-                var contentContainer = $('.blog-sidebar-content-container', element);
-                var markerHeight = marker.height();
-                
-                function selectPanel(panel) {
-                    var headerText = $('h3', '#' + panel).text();
-                    var content = '';
-
-                    selectPanelHeader(headerText);
-                    selectPanelContent(content);
-                }
-                
-                function selectPanelHeader(headerText) {
-                    headers
-                        .append($('<li />', {
-                            'text': headerText
-                        }))
-                        .addClass('animated-header')
-                        .css('left', -200);
-                }
-
-                function selectHeaderAnimationCompleted() {
-                    if(headers.children().size() == 1) {
-                        return;
-                    }
-
-                    headers
-                        .children(':first').remove().end()
-                        .removeClass('animated-header').css('left', 0);
-                }
-                
-                function selectPanelContent() {
-
-                }
-
-                function selectItem(item) {
-                    if (headers.children().size() > 1) {
-                        return;
-                    }
-                    
-                    var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
-                    var panel = item.data('panelId');
-
-                    marker.css('top', topPosition);
-                    item.addClass('selected').siblings().removeClass('selected');
-
-                    selectPanel(panel);
-                }
-
-                headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectHeaderAnimationCompleted);
-
-                options.on('click', 'a', function () {
-                    var item = $(this).parent();
-
-                    selectItem(item);
-
-                    return false;
-                });
-
-                TEGUD.subscribe('TEGUD.Page.Scroll', function (currentTopScroll) {
-                    if (currentTopScroll > blogSideTop) {
-                        element.addClass('fixed');
-                    }
-                    else {
-                        element.removeClass('fixed');
-                    }
-                });
-            };
-
-            TEGUD.Menu = function (element) {
-                var body = $('body');
-                var menuTop = element.offset().top;
-                var fixedMenu = $('<div class="fixed-menu hidden"></div>')
-                    .append(element.clone().removeAttr('id'))
-                    .appendTo(body);
-                var jumpToTopElement = $('.jump-to-top', fixedMenu);
-
-                TEGUD.subscribe('TEGUD.Page.Scroll', function(currentTopScroll) {
-                    if (currentTopScroll > menuTop) {
-                        fixedMenu.removeClass('hidden');
-                        setTimeout(function() {
-                            jumpToTopElement.addClass('visible');
-                        }, 0);
-                    } else {
-                        fixedMenu.addClass('hidden');
-                        jumpToTopElement.removeClass('visible');
-                    }
-                });
-            };
-
-            var body = $('body');
-
-            $(window).on('scroll', new TEGUD.Utilities.ThrottledFunction(function() {
-                var currentTopScroll = body.scrollTop();
-
-                TEGUD.publish('TEGUD.Page.Scroll', [currentTopScroll]);
-            }, 5));
-
             new TEGUD.BlogSideBar($('#blog-sidebar'));
             new TEGUD.Menu($('#site-menu'));
         })();

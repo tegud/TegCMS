@@ -113,7 +113,7 @@ a:hover { color: #75A4FF }
 
 .blog-sidebar-container { position: relative; }
 
-.blog-sidebar-options { background-color: #fff;border: 1px solid #000;top: -6px;right: -29px;position: absolute;border-left:0 }
+.blog-sidebar-options { background-color: #fff;border: 1px solid #000;top: -11px;right: -29px;position: absolute;border-left:0 }
 
 .blog-sidebar-options-marker { position: absolute;top: 5px;left: -5px;height: 16px;width: 6px;background-image: url('../images/blog-options.png');background-position: -20px 0; 
     -webkit-transition: top 500ms;
@@ -137,15 +137,26 @@ a:hover { color: #75A4FF }
 .blog-sidebar-options li a:hover,
 .blog-sidebar-options li.selected a {-webkit-filter: blur(0px);}
 
+.blog-sidebar-options .search { display: none; }
+
 .blog-sidebar-options .tags    a { background-position: 0 -60px; }
 .blog-sidebar-options .archive a { background-position: 0 -20px; }
 .blog-sidebar-options .search  a { background-position: 0 -40px; }
 
-.blog-sidebar-inner { margin: 5px 10px 5px 5px;height: 200px;position: relative; overflow: hidden }
+.blog-sidebar-inner { margin: 10px;height: 200px;position: relative; overflow: hidden }
 
 .blog-sidebar-headers { margin: 0;padding: 0;list-style: none;font-size: 1.1em;font-weight: bold;width: 850px;position: absolute;left: 0; }
 
 .animated-header
+{
+    -webkit-transition: left 400ms;
+    -moz-transition: left 400ms;
+    -ms-transition: left 400ms;
+    -o-transition: left 400ms;
+    transition: left 400ms;
+}
+
+.animated-sidebar-section
 {
     -webkit-transition: left 500ms;
     -moz-transition: left 500ms;
@@ -156,9 +167,9 @@ a:hover { color: #75A4FF }
 
 .blog-sidebar-headers li { display: inline-block;width: 200px; }
 
-.blog-sidebar-content-container { margin-top: 22px;position: absolute;width: 500px; }
+.blog-sidebar-content-container { margin-top: 22px;position: absolute;width: 650px; }
 
-.blog-sidebar-content { float: left;width: 200px; }
+.blog-sidebar-content { float: left;width: 200px;padding-right: 100px;display: inline-block;min-height: 50px; }
 
 .blog-item-details { padding: 3px 0; margin: 3px 0 0 0; border-top: solid 1px #666; }
 
