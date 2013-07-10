@@ -145,6 +145,11 @@
     <Content Include="Assets\Tegud\images\social-icons.png" />
     <Content Include="Assets\Tegud\images\stackoverflow.png" />
     <Content Include="Assets\Tegud\images\twitter.png" />
+    <Content Include="Assets\Tegud\js\Libraries\nanoMachine.js" />
+    <Content Include="Assets\Tegud\js\Libraries\Tegud.Utilities.js" />
+    <Content Include="Assets\Tegud\js\Libraries\Tegud.js" />
+    <Content Include="Assets\Tegud\js\Modules\BlogSideBar\BlogSideBar.js" />
+    <Content Include="Assets\Tegud\js\Modules\Menu\Menu.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -157,7 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Tegud\js\" />
     <Folder Include="Models\" />
     <Folder Include="Modules\" />
   </ItemGroup>
@@ -187,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Layouts\tegud\Home.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Tegud\js\Libraries\Tegud.PageFramework.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

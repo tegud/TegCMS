@@ -10,16 +10,25 @@
         var headerDeferred;
         var contentDeferred;
 
-        function resetToSingle(element, className) {
-            element
-                .children(':first').remove().end()
-                .removeClass(className).css('left', 0);
+        function resetToSingleElement(containerElement, className) {
+            containerElement
+                    .children(':first')
+                    .remove()
+                    .end()
+                .removeClass(className)
+                .css('left', 0);
         }
 
         var fsm = new nano.Machine({
             states: {
                 waiting: {
-                    'selectPanel': function (panel) {
+                    'selectPanel': function (item) {
+                        var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
+                        var panel = item.data('panelId');
+
+                        marker.css('top', topPosition);
+                        item.addClass('selected').siblings().removeClass('selected');
+
                         var panelSelector = '#' + panel;
                         var headerText = $('h3', panelSelector).text();
                         var content = $('.blog-sidebar-panel-content', panelSelector).html();
@@ -36,8 +45,8 @@
                 },
                 animating: {
                     'complete': function () {
-                        resetToSingle(headers, 'animated-header');
-                        resetToSingle(contentContainer, 'animated-sidebar-section');
+                        resetToSingleElement(headers, 'animated-header');
+                        resetToSingleElement(contentContainer, 'animated-sidebar-section');
                         
                         this.transitionToState('waiting');
                     }
@@ -46,15 +55,15 @@
             initialState: 'waiting'
         });
 
-        function selectPanel(panel) {
-            fsm.handle('selectPanel', panel);
+        function buildHeaderElement(headerText) {
+            return $('<li />', {
+                'text': headerText
+            });
         }
 
         function selectPanelHeader(headerText) {
             headers
-                .append($('<li />', {
-                    'text': headerText
-                }))
+                .append(buildHeaderElement(headerText))
                 .addClass('animated-header')
                 .css('left', -200);
 
@@ -65,7 +74,7 @@
             contentContainer
                 .append($('<div />', {
                     'class': 'blog-sidebar-content',
-                    'text': content
+                    'html': content
                 }))
                 .addClass('animated-sidebar-section')
                 .css('left', -300);
@@ -82,17 +91,7 @@
         }
 
         function selectItem(item) {
-            if (headers.children().size() > 1) {
-                return;
-            }
-
-            var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
-            var panel = item.data('panelId');
-
-            marker.css('top', topPosition);
-            item.addClass('selected').siblings().removeClass('selected');
-
-            selectPanel(panel);
+            fsm.handle('selectPanel', item);
         }
 
         headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectHeaderAnimationCompleted);
