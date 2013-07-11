@@ -11,49 +11,34 @@
         var contentDeferred;
 
         function resetToSingleElement(containerElement, className) {
-            containerElement
+            if (containerElement.children().size() > 1) {
+                containerElement
                     .children(':first')
-                    .remove()
-                    .end()
-                .removeClass(className)
-                .css('left', 0);
+                    .remove();
+            }
+            containerElement.removeClass(className).css('left', 0);
         }
+        
+        function positionMarker(item) {
+            var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
+            marker.css('top', topPosition);
+        }
+        
+        function selectMenuItem(item) {
+            item.addClass('selected').siblings().removeClass('selected');
+        }
+        
+        function getPanelData(item) {
+            var panel = item.data('panelId');
+            var panelSelector = '#' + panel;
+            var headerText = $('h3', panelSelector).text();
+            var content = $('.blog-sidebar-panel-content', panelSelector).html();
 
-        var fsm = new nano.Machine({
-            states: {
-                waiting: {
-                    'selectPanel': function (item) {
-                        var topPosition = item.position().top + ((item.height() - markerHeight) / 2) + 1;
-                        var panel = item.data('panelId');
-
-                        marker.css('top', topPosition);
-                        item.addClass('selected').siblings().removeClass('selected');
-
-                        var panelSelector = '#' + panel;
-                        var headerText = $('h3', panelSelector).text();
-                        var content = $('.blog-sidebar-panel-content', panelSelector).html();
-
-                        headerDeferred = selectPanelHeader(headerText);
-                        contentDeferred = selectPanelContent(content);
-
-                        $.when(headerDeferred, contentDeferred).then(function () {
-                            fsm.handle('complete');
-                        });
-
-                        this.transitionToState('animating');
-                    }
-                },
-                animating: {
-                    'complete': function () {
-                        resetToSingleElement(headers, 'animated-header');
-                        resetToSingleElement(contentContainer, 'animated-sidebar-section');
-                        
-                        this.transitionToState('waiting');
-                    }
-                }
-            },
-            initialState: 'waiting'
-        });
+            return {
+                headerText: headerText,
+                content: content
+            };
+        }
 
         function buildHeaderElement(headerText) {
             return $('<li />', {
@@ -61,24 +46,29 @@
             });
         }
 
-        function selectPanelHeader(headerText) {
-            headers
-                .append(buildHeaderElement(headerText))
-                .addClass('animated-header')
-                .css('left', -200);
-
-            return $.Deferred();
+        function buildContentElement(content) {
+            return $('<div />', {
+                'class': 'blog-sidebar-content',
+                'html': content
+            });
         }
 
-        function selectPanelContent(content) {
-            contentContainer
-                .append($('<div />', {
-                    'class': 'blog-sidebar-content',
-                    'html': content
-                }))
-                .addClass('animated-sidebar-section')
-                .css('left', -300);
-            
+        function appendElement(elementFactory, container, contents) {
+            container.append(elementFactory(contents));
+        }
+
+        function transitionHeaderAndContentToNext() {
+            headerDeferred = transitionToNext(headers, 'animated-header', -200);
+            contentDeferred = transitionToNext(contentContainer, 'animated-sidebar-section', -300);
+
+            return $.when(headerDeferred, contentDeferred);
+        }
+        
+        function transitionToNext(container, className, animateTo) {
+            container
+                .addClass(className)
+                .css('left', animateTo);
+
             return $.Deferred();
         }
 
@@ -90,17 +80,43 @@
             contentDeferred.resolve();
         }
 
-        function selectItem(item) {
-            fsm.handle('selectPanel', item);
-        }
+        var fsm = new nano.Machine({
+            states: {
+                waiting: {
+                    _onEnter: function () {
+                        resetToSingleElement(headers, 'animated-header');
+                        resetToSingleElement(contentContainer, 'animated-sidebar-section');
+                    },
+                    selectPanel: function (item) {
+                        positionMarker(item);
+                        selectMenuItem(item);
+                        var panelData = getPanelData(item);
+
+                        appendElement(buildHeaderElement, headers, panelData.headerText);
+                        appendElement(buildContentElement, contentContainer, panelData.content);
+
+                        this.transitionToState('animating');
+                    }
+                },
+                animating: {
+                    _onEnter: function () {
+                        transitionHeaderAndContentToNext().then(function () {
+                            fsm.handle('complete');
+                        });
+                    },
+                    complete: function () {
+                        this.transitionToState('waiting');
+                    }
+                }
+            },
+            initialState: 'waiting'
+        });
 
         headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectHeaderAnimationCompleted);
         contentContainer.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectPanelAnimationCompleted);
 
-        options.on('click', 'a', function () {
-            var item = $(this).parent();
-
-            selectItem(item);
+        options.on('click', 'li', function () {
+            fsm.handle('selectPanel', $(this));
 
             return false;
         });
