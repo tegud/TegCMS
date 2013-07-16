@@ -1,4 +1,51 @@
 ﻿(function () {
+    var animatorFactory = (function() {
+        var animators = {
+            Css3: function(headers, contentContainer) {
+                var headerDeferred;
+                var contentDeferred;
+
+                function transitionToNext(container, className) {
+                    var animateTo = -(container.children(':first').outerWidth());
+
+                    container
+                        .addClass(className)
+                        .css('left', animateTo);
+
+                    return $.Deferred();
+                }
+
+                headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", function() {
+                    headerDeferred.resolve();
+                });
+                contentContainer.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", function() {
+                    contentDeferred.resolve();
+                });
+
+                return function() {
+                    headerDeferred = transitionToNext(headers, 'animated-header');
+                    contentDeferred = transitionToNext(contentContainer, 'animated-sidebar-section', -300);
+
+                    return $.when(headerDeferred, contentDeferred);
+                };
+            }
+        };
+
+        return {
+            build: function(headers, contentContainer) {
+                return animators.Css3(headers, contentContainer);
+            }
+        };
+    })();
+
+    var panelContentFactory = (function () {
+        
+
+
+
+
+    })();
+    
     TEGUD.BlogSideBar = function (element) {
         var blogSideTop = element.offset().top - 51;
         var options = $('.blog-sidebar-options', element);
@@ -7,8 +54,6 @@
         var panels = $('.blog-sidebar-panel').hide();
         var contentContainer = $('.blog-sidebar-content-container', element);
         var markerHeight = marker.height();
-        var headerDeferred;
-        var contentDeferred;
 
         function resetToSingleElement(containerElement, className) {
             if (containerElement.children().size() > 1) {
@@ -28,56 +73,39 @@
             item.addClass('selected').siblings().removeClass('selected');
         }
         
-        function getPanelData(item) {
-            var panel = item.data('panelId');
-            var panelSelector = '#' + panel;
-            var headerText = $('h3', panelSelector).text();
-            var content = $('.blog-sidebar-panel-content', panelSelector).html();
+        function appendNextPanel(item) {
+            function getPanelData(item) {
+                var panel = item.data('panelId');
+                var panelSelector = '#' + panel;
+                var headerText = $('h3', panelSelector).text();
+                var content = $('.blog-sidebar-panel-content', panelSelector).html();
 
-            return {
-                headerText: headerText,
-                content: content
-            };
-        }
+                return {
+                    headerText: headerText,
+                    content: content
+                };
+            }
+            
+            function appendElement(elementFactory, container, contents) {
+                container.append(elementFactory(contents));
+            }
+            
+            function buildHeaderElement(headerText) {
+                return $('<li />', {
+                    'text': headerText
+                });
+            }
 
-        function buildHeaderElement(headerText) {
-            return $('<li />', {
-                'text': headerText
-            });
-        }
-
-        function buildContentElement(content) {
-            return $('<div />', {
-                'class': 'blog-sidebar-content',
-                'html': content
-            });
-        }
-
-        function appendElement(elementFactory, container, contents) {
-            container.append(elementFactory(contents));
-        }
-
-        function transitionHeaderAndContentToNext() {
-            headerDeferred = transitionToNext(headers, 'animated-header', -200);
-            contentDeferred = transitionToNext(contentContainer, 'animated-sidebar-section', -300);
-
-            return $.when(headerDeferred, contentDeferred);
-        }
-        
-        function transitionToNext(container, className, animateTo) {
-            container
-                .addClass(className)
-                .css('left', animateTo);
-
-            return $.Deferred();
-        }
-
-        function selectHeaderAnimationCompleted() {
-            headerDeferred.resolve();
-        }
-
-        function selectPanelAnimationCompleted() {
-            contentDeferred.resolve();
+            function buildContentElement(content) {
+                return $('<div />', {
+                    'class': 'blog-sidebar-content',
+                    'html': content
+                });
+            }
+            
+            var panelData = getPanelData(item);
+            appendElement(buildHeaderElement, headers, panelData.headerText);
+            appendElement(buildContentElement, contentContainer, panelData.content);
         }
 
         var fsm = new nano.Machine({
@@ -90,17 +118,14 @@
                     selectPanel: function (item) {
                         positionMarker(item);
                         selectMenuItem(item);
-                        var panelData = getPanelData(item);
-
-                        appendElement(buildHeaderElement, headers, panelData.headerText);
-                        appendElement(buildContentElement, contentContainer, panelData.content);
+                        appendNextPanel(item);
 
                         this.transitionToState('animating');
                     }
                 },
                 animating: {
                     _onEnter: function () {
-                        transitionHeaderAndContentToNext().then(function () {
+                        animatorFactory.build(headers, contentContainer)().then(function () {
                             fsm.handle('complete');
                         });
                     },
@@ -112,8 +137,6 @@
             initialState: 'waiting'
         });
 
-        headers.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectHeaderAnimationCompleted);
-        contentContainer.on("webkitTransitionEnd oTransitionEnd otransitionend transitionend msTransitionEnd", selectPanelAnimationCompleted);
 
         options.on('click', 'li', function () {
             fsm.handle('selectPanel', $(this));
