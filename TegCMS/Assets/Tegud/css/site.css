@@ -145,6 +145,14 @@ a:hover { color: #75A4FF }
 
 .blog-sidebar-inner { margin: 10px;height: 200px;position: relative; overflow: hidden }
 
+.animate-height {
+    -webkit-transition: height 400ms;
+    -moz-transition: height 400ms;
+    -ms-transition: height 400ms;
+    -o-transition: height 400ms;
+    transition: height 400ms;
+}
+
 .blog-sidebar-headers { margin: 0;padding: 0;list-style: none;font-size: 1.1em;font-weight: bold;width: 850px;position: absolute;left: 0; }
 
 .animated-header

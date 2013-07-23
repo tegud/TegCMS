@@ -45,50 +45,21 @@
     
     <div id="home-main-content">
         <div class="side-column">
-            <div class="side-column-module" id="blog-sidebar">
-                <div class="blog-sidebar-container">
-                    <nav class="blog-sidebar-options">
-                        <div class="blog-sidebar-options-marker"></div>
-                        <ul>
-                            <li class="info selected" data-panel-id="blog-info" data-header-class="blog-sidebar-item-info"><a href=""></a></li>
-                            <li class="tags" data-panel-id="tag-cloud" data-header-class="blog-sidebar-tag-cloud"><a href=""></a></li>
-                            <li class="archive" data-panel-id="tag-archive" data-header-class="blog-sidebar-archive"><a href=""></a></li>
-                            <li class="search" data-panel-id="blog-search" data-header-class="blog-sidebar-search"><a href=""></a></li>
-                        </ul>
-                    </nav>
-                    <div class="blog-sidebar-inner">
-                        <ul class="blog-sidebar-headers">
-                            <li>Item Info</li>
-                        </ul>
-                        <div class="blog-sidebar-content-container">
-                            <div class="blog-sidebar-content"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="blog-sidebar-panel" id="blog-info">
-                <h3>Item Info</h3>
-                <div class="blog-sidebar-panel-content">
-                    [Info] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
-                </div>
-            </div>
-            
-            <div class="blog-sidebar-panel" id="tag-cloud">
+            <div class="blog-sidebar-panel" id="tag-cloud" data-item-class="tags">
                 <h3>Tag Cloud</h3>
                 <div class="blog-sidebar-panel-content">
                     [Tags] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
                 </div>
             </div>
             
-            <div class="blog-sidebar-panel" id="tag-archive">
+            <div class="blog-sidebar-panel" id="tag-archive" data-item-class="archive">
                 <h3>Archive</h3>
                 <div class="blog-sidebar-panel-content">
                     [Archive] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
                 </div>
             </div>
             
-            <div class="blog-sidebar-panel" id="blog-search">
+            <div class="blog-sidebar-panel" id="blog-search" data-item-class="search">
                 <h3>Search</h3>
                 <div class="blog-sidebar-panel-content">
                     [Search] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed enim nec nibh ultrices tempus vitae ut turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aliquam erat volutpat. Donec semper rhoncus diam. Duis non ultrices nisi, at fringilla libero. Aliquam vehicula sagittis orci sit amet dictum. Ut ut metus quis diam cursus scelerisque nec vitae enim. Mauris sit amet placerat metus. Integer dictum egestas mauris, interdum facilisis neque malesuada sed.
@@ -153,6 +124,7 @@
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     
+    <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/mustache.js"></script>
     <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/nanoMachine.js"></script>
     <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/Tegud.js"></script>
     <script type="text/javascript" src="~/Assets/Tegud/js/Libraries/Tegud.Utilities.js"></script>
@@ -164,7 +136,7 @@
     <script type="text/javascript">
         
         (function () {
-            new TEGUD.BlogSideBar($('#blog-sidebar'));
+            new TEGUD.BlogSideBar($('.side-column', '#home-main-content'));
             new TEGUD.Menu($('#site-menu'));
         })();
     </script>
