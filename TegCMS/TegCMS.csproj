@@ -145,10 +145,14 @@
     <Content Include="Assets\Tegud\images\social-icons.png" />
     <Content Include="Assets\Tegud\images\stackoverflow.png" />
     <Content Include="Assets\Tegud\images\twitter.png" />
+    <Content Include="Assets\Tegud\js\Libraries\mustache.js" />
     <Content Include="Assets\Tegud\js\Libraries\nanoMachine.js" />
     <Content Include="Assets\Tegud\js\Libraries\Tegud.Utilities.js" />
     <Content Include="Assets\Tegud\js\Libraries\Tegud.js" />
     <Content Include="Assets\Tegud\js\Modules\BlogSideBar\BlogSideBar.js" />
+    <Content Include="Assets\Tegud\js\Modules\BlogSideBar\SideBarPanelCollection.js" />
+    <Content Include="Assets\Tegud\js\Modules\BlogSideBar\Options.js" />
+    <Content Include="Assets\Tegud\js\Modules\BlogSideBar\Panels.js" />
     <Content Include="Assets\Tegud\js\Modules\Menu\Menu.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
